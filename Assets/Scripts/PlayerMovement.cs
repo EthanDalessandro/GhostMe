@@ -20,9 +20,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        Debug.Log(Screen.width);
-        Debug.Log(Screen.height);
     }
 
     private void OnApplicationFocus(bool focus)
