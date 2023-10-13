@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        Debug.Log(Screen.width);
+        Debug.Log(Screen.height);
     }
 
     private void OnApplicationFocus(bool focus)
@@ -42,13 +45,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void RotateCamera()
     {
-        Vector3 mousePosition = Mouse.current.position.ReadValue();
+        Vector3 mousePosition = Mouse.current.position.ReadValue(); // je récupère la position de ma souris sur l'axe X et Y
 
-        float mouseYRotation = -mousePosition.y * rotateHeadSpeed * Time.fixedDeltaTime;
-        currentHeadRotationX = Mathf.Clamp(currentHeadRotationX + mouseYRotation, -50f, 50f);
+        float mouseYRotation = (-mousePosition.y * rotateHeadSpeed * Time.fixedDeltaTime); // je modifie la mousePosition.y
+        float mouseXRotation = (mousePosition.x * rotateHeadSpeed * Time.fixedDeltaTime); // je modifie la mousePosition.x
 
-        transform.localRotation = Quaternion.Euler(0, mousePosition.x * rotateHeadSpeed * Time.fixedDeltaTime, 0);
-        head.localRotation = Quaternion.Euler(currentHeadRotationX, 0, 0);
+        currentHeadRotationX = Mathf.Clamp(mouseYRotation, -50f, 50f); //Je limites l'axe de la caméra en X pour éviter qu'il se torde le dos
+
+        transform.localRotation = Quaternion.Euler(0, mouseXRotation, 0); //Ici je tourne le player
+        head.localRotation = Quaternion.Euler(currentHeadRotationX, 0, 0); // Ici je tourne le composant "Head" qui a pour enfant la caméra
     }
 
     private void Movement()
@@ -58,8 +63,10 @@ public class PlayerMovement : MonoBehaviour
             time += Time.fixedDeltaTime;
             moveSpeed = speedCurve.Evaluate(time);
         }
-        
-        rb.velocity = new Vector3(movePos.x * moveSpeed, rb.velocity.y, movePos.y * moveSpeed); // la velocité va prendre la valeur de movPos de X pour l'axe X et pour l'axe Z on va lui donner la valeur de movPos de Y
+
+        Vector3 direction = transform.TransformDirection(new Vector3(movePos.x * moveSpeed, rb.velocity.y, movePos.y * moveSpeed)); // On utilise Transform direction pour transformer nos rotation en local vers des rotation en world
+
+        rb.velocity = direction; // la velocité va prendre la valeur de movPos de X pour l'axe X et pour l'axe Z on va lui donner la valeur de movPos de Y
     }
 
     public void Move(InputAction.CallbackContext context)
