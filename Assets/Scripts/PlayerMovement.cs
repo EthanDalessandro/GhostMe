@@ -3,12 +3,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Vector2 movePos;
-    private float time;
-    private bool isMoving;
     private Rigidbody rb;
 
-    [SerializeField]private float currentHeadRotationX = 0f;
+    private Vector2 movePos;
+
+    private bool isMoving;
+
+    private float time;
+    private float currentHeadRotationX = 0f;
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private Transform head;
@@ -26,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(focus)
         {
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.Locked;
         }
         else
         {
@@ -37,20 +39,19 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
-        RotateCamera();
     }
 
-    private void RotateCamera()
+    public void Look(InputAction.CallbackContext context)    
     {
-        Vector3 mousePosition = Mouse.current.position.ReadValue(); // je récupère la position de ma souris sur l'axe X et Y
+        Vector3 mousePosition = context.ReadValue<Vector2>(); // je rÃ©cupÃ¨re la position de ma souris sur l'axe X et Y
 
-        float mouseYRotation = (-mousePosition.y * rotateHeadSpeed * Time.fixedDeltaTime); // je modifie la mousePosition.y
         float mouseXRotation = (mousePosition.x * rotateHeadSpeed * Time.fixedDeltaTime); // je modifie la mousePosition.x
+        float mouseYRotation = (-mousePosition.y * rotateHeadSpeed * Time.fixedDeltaTime); // je modifie la mousePosition.y
 
-        currentHeadRotationX = Mathf.Clamp(mouseYRotation, -50f, 50f); //Je limites l'axe de la caméra en X pour éviter qu'il se torde le dos
+        currentHeadRotationX = Mathf.Clamp(mouseYRotation + currentHeadRotationX, -50f, 50f); //Je limites l'axe de la camÃ©ra en X pour Ã©viter qu'il se torde le dos
 
-        transform.localRotation = Quaternion.Euler(0, mouseXRotation, 0); //Ici je tourne le player
-        head.localRotation = Quaternion.Euler(currentHeadRotationX, 0, 0); // Ici je tourne le composant "Head" qui a pour enfant la caméra
+        transform.Rotate(transform.rotation.x, mouseXRotation, transform.rotation.z); //Ici je tourne le player
+        head.localRotation = Quaternion.Euler(currentHeadRotationX, 0, 0); // Ici je tourne le composant "Head" qui a pour enfant la camÃ©ra
     }
 
     private void Movement()
@@ -63,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 direction = transform.TransformDirection(new Vector3(movePos.x * moveSpeed, rb.velocity.y, movePos.y * moveSpeed)); // On utilise Transform direction pour transformer nos rotation en local vers des rotation en world
 
-        rb.velocity = direction; // la velocité va prendre la valeur de movPos de X pour l'axe X et pour l'axe Z on va lui donner la valeur de movPos de Y
+        rb.velocity = direction; // la velocitÃ© va prendre la valeur de movPos de X pour l'axe X et pour l'axe Z on va lui donner la valeur de movPos de Y
     }
 
     public void Move(InputAction.CallbackContext context)
