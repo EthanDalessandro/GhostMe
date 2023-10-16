@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 direction = transform.TransformDirection(new Vector3(movePos.x * moveSpeed, rb.velocity.y, movePos.y * moveSpeed)); // On utilise Transform direction pour transformer nos rotation en local vers des rotation en world
 
-        rb.velocity = direction; // la velocité va prendre la valeur de movPos de X pour l'axe X et pour l'axe Z on va lui donner la valeur de movPos de Y
+        rb.velocity = direction; // la velocitÃ© va prendre la valeur de movPos de X pour l'axe X et pour l'axe Z on va lui donner la valeur de movPos de Y
     }
 
     public void Move(InputAction.CallbackContext context)
