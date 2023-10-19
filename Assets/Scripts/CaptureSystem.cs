@@ -1,16 +1,28 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CaptureSystem : MonoBehaviour
 {
+    private int heightScreen = 512;
+    private int widthScreen = 512;
+    private int depthScreen = 12;
+
     [SerializeField] private Transform target;
     [SerializeField] private float score;
     [SerializeField] private Camera cam;
     [SerializeField] private GridPointSensor ghostSensors;
+    public List<Sprite> screenSprites;
 
     private void Start()
     {
+        screenSprites.Clear();
         ghostSensors = target.gameObject.GetComponent<GridPointSensor>();
+    }
+
+    float Remap(float source, float sourceFrom, float sourceTo, float targetFrom, float targetTo)
+    {
+        return targetFrom + (source - sourceFrom) * (targetTo - targetFrom) / (sourceTo - sourceFrom);
     }
 
     public void Capture(InputAction.CallbackContext context)
@@ -18,12 +30,8 @@ public class CaptureSystem : MonoBehaviour
         if (context.performed)
         {
             CheckGhostCollisionRay();
+            CaptureScreen();
         }
-    }
-
-    float Remap(float source, float sourceFrom, float sourceTo, float targetFrom, float targetTo)
-    {
-        return targetFrom + (source - sourceFrom) * (targetTo - targetFrom) / (sourceTo - sourceFrom);
     }
 
     private void CheckGhostCollisionRay()
@@ -59,7 +67,29 @@ public class CaptureSystem : MonoBehaviour
                 return factor * 1 / Mathf.Max(1, hit.distance - 5);
             }
         }
-
         return 0;
+    }
+
+    public void CaptureScreen()
+    {
+        RenderTexture renderTexture = new RenderTexture(widthScreen, heightScreen, depthScreen);
+        Rect rect = new Rect(0, 0, widthScreen, heightScreen);
+        Texture2D texture = new Texture2D(widthScreen, heightScreen, TextureFormat.RGBA32, false);
+
+        cam.targetTexture = renderTexture;
+        cam.Render();
+
+        RenderTexture currentRenderTexture = RenderTexture.active;
+        RenderTexture.active = renderTexture;
+        texture.ReadPixels(rect, 0, 0);
+        texture.Apply();
+
+        cam.targetTexture = null;
+        RenderTexture.active = currentRenderTexture;
+        Destroy(renderTexture);
+
+        Sprite sprite = Sprite.Create(texture, rect, Vector2.zero);
+
+        screenSprites.Add(sprite);
     }
 }
