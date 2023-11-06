@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float rotateHeadSpeed;
 
     [SerializeField] private AnimationCurve speedCurve;
+    [SerializeField] private AlbumManager albumState;
 
 
     private void Start()
@@ -43,15 +44,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void Look(InputAction.CallbackContext context)
     {
-        Vector3 mousePosition = context.ReadValue<Vector2>(); // je récupère la position de ma souris sur l'axe X et Y
+        if (albumState.albumOpen == false)
+        {
+            Vector3 mousePosition = context.ReadValue<Vector2>(); // je récupère la position de ma souris sur l'axe X et Y
 
-        float mouseXRotation = (mousePosition.x * rotateHeadSpeed * Time.fixedDeltaTime); // je modifie la mousePosition.x
-        float mouseYRotation = (-mousePosition.y * rotateHeadSpeed * Time.fixedDeltaTime); // je modifie la mousePosition.y
+            float mouseXRotation = (mousePosition.x * rotateHeadSpeed * Time.fixedDeltaTime); // je modifie la mousePosition.x
+            float mouseYRotation = (-mousePosition.y * rotateHeadSpeed * Time.fixedDeltaTime); // je modifie la mousePosition.y
 
-        currentHeadRotationX = Mathf.Clamp(mouseYRotation + currentHeadRotationX, -50f, 50f); //Je limites l'axe de la caméra en X pour éviter qu'il se torde le dos
+            currentHeadRotationX = Mathf.Clamp(mouseYRotation + currentHeadRotationX, -50f, 50f); //Je limites l'axe de la caméra en X pour éviter qu'il se torde le dos
 
-        transform.Rotate(transform.rotation.x, mouseXRotation, transform.rotation.z); //Ici je tourne le player
-        head.localRotation = Quaternion.Euler(currentHeadRotationX, 0, 0); // Ici je tourne le composant "Head" qui a pour enfant la caméra
+            transform.Rotate(transform.rotation.x, mouseXRotation, transform.rotation.z); //Ici je tourne le player
+            head.localRotation = Quaternion.Euler(currentHeadRotationX, 0, 0); // Ici je tourne le composant "Head" qui a pour enfant la caméra
+        }
     }
 
     private void Movement()
