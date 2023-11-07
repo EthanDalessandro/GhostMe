@@ -37413,6 +37413,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 366111173545288562, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[1].value
+      value: 4.672332
+      objectReference: {fileID: 0}
+    - target: {fileID: 366111173545288562, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[2].value
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 366111173545288562, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[1].inSlope
+      value: 5.3106728
+      objectReference: {fileID: 0}
+    - target: {fileID: 366111173545288562, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[1].outSlope
+      value: 5.3106728
+      objectReference: {fileID: 0}
     - target: {fileID: 812077171843675496, guid: 7ae9052e57e86f04b958b5f112ec81c4,
         type: 3}
       propertyPath: m_ClearFlags
@@ -56604,7 +56624,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
