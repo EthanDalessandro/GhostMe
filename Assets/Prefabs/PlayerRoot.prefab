@@ -146,13 +146,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 800e13110d2d3f24481b8561fd13604c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  targets: []
   score: 0
   canCapture: 1
   captureRate: 1
   captureLeft: 15
   cam: {fileID: 812077171843675496}
-  ghostSensors: {fileID: 0}
+  ghostSensors: []
   screenSprites: []
 --- !u!114 &8377265767688842934
 MonoBehaviour:
