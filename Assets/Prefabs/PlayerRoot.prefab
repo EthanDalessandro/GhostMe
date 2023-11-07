@@ -150,7 +150,7 @@ MonoBehaviour:
   score: 0
   canCapture: 1
   captureRate: 1
-  captureLeft: 0
+  captureLeft: 15
   cam: {fileID: 812077171843675496}
   ghostSensors: {fileID: 0}
   screenSprites: []
