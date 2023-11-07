@@ -16,6 +16,7 @@ public class CaptureSystem : MonoBehaviour
     [Header("Capture Properties")]
     [SerializeField] private bool canCapture = true;
     [SerializeField] private float captureRate;
+    public int captureLeft;
 
     [Header("Sensors")]
     [SerializeField] private Camera cam;
@@ -38,8 +39,9 @@ public class CaptureSystem : MonoBehaviour
 
     public void Capture(InputAction.CallbackContext context)
     {
-        if (context.performed && canCapture == true)
+        if (context.performed && canCapture == true && captureLeft > 0)
         {
+            captureLeft--;
             StartCoroutine(captureDelay(captureRate));
             CheckGhostCollisionRay();
             CaptureScreen();
