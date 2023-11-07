@@ -9,7 +9,7 @@ public class CaptureSystem : MonoBehaviour
     private int widthScreen = 512;
     private int depthScreen = 12;
 
-    [SerializeField] private Transform target;
+    [SerializeField] private List<Transform> targets;
 
     [SerializeField] private float score;
 
@@ -20,7 +20,7 @@ public class CaptureSystem : MonoBehaviour
 
     [Header("Sensors")]
     [SerializeField] private Camera cam;
-    [SerializeField] private GridPointSensor ghostSensors;
+    [SerializeField] private List<GridPointSensor> ghostSensors;
 
     [Header("Sprites")]
     public List<Sprite> screenSprites; 
@@ -29,7 +29,11 @@ public class CaptureSystem : MonoBehaviour
     {
         canCapture = true;
         screenSprites.Clear();
-        ghostSensors = target.gameObject.GetComponent<GridPointSensor>();
+
+        foreach (Transform t in targets)
+        {
+            ghostSensors.Add(t.GetComponent<GridPointSensor>());
+        }
     }
 
     float Remap(float source, float sourceFrom, float sourceTo, float targetFrom, float targetTo)
@@ -50,16 +54,18 @@ public class CaptureSystem : MonoBehaviour
 
     private void CheckGhostCollisionRay()
     {
-         score = 0;
-
-        for (int i = 0; i < ghostSensors.Points.Count; i++)
+        score = 0;
+        foreach (GridPointSensor sensor in ghostSensors)
         {
-            Vector3 direction = ghostSensors.Points[i] - transform.position;
-            direction = direction.normalized;
-            score += CheckVisibility(direction);
+            for (int i = 0; i < sensor.Points.Count; i++)
+            {
+                Vector3 direction = sensor.Points[i] - transform.position;
+                direction = direction.normalized;
+                score += CheckVisibility(direction);
+            }
         }
-
-        score /= ghostSensors.Points.Count;
+        score /= ghostSensors[0].Points.Count;
+        score *= 100;
     }
 
     private float CheckVisibility(Vector3 direction)
