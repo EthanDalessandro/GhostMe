@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,13 +10,23 @@ public class CaptureSystem : MonoBehaviour
     private int depthScreen = 12;
 
     [SerializeField] private Transform target;
+
     [SerializeField] private float score;
+
+    [Header("Capture Properties")]
+    [SerializeField] private bool canCapture = true;
+    [SerializeField] private float captureRate;
+
+    [Header("Sensors")]
     [SerializeField] private Camera cam;
     [SerializeField] private GridPointSensor ghostSensors;
-    public List<Sprite> screenSprites;
+
+    [Header("Sprites")]
+    public List<Sprite> screenSprites; 
 
     private void Start()
     {
+        canCapture = true;
         screenSprites.Clear();
         ghostSensors = target.gameObject.GetComponent<GridPointSensor>();
     }
@@ -27,8 +38,9 @@ public class CaptureSystem : MonoBehaviour
 
     public void Capture(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && canCapture == true)
         {
+            StartCoroutine(captureDelay(captureRate));
             CheckGhostCollisionRay();
             CaptureScreen();
         }
@@ -91,5 +103,12 @@ public class CaptureSystem : MonoBehaviour
         Sprite sprite = Sprite.Create(texture, rect, Vector2.zero);
 
         screenSprites.Add(sprite);
+    }
+
+    public IEnumerator captureDelay(float time)
+    {
+        canCapture = false;
+        yield return new WaitForSeconds(time);
+        canCapture = true;
     }
 }
