@@ -7,6 +7,7 @@ public class AlbumManager : MonoBehaviour
     public bool albumOpen = false;
 
     [SerializeField] private GameObject albumCanvas;
+    [SerializeField] private GameObject CanvasToDeactivate;
     [SerializeField] private GameObject shotPrefab;
 
     [SerializeField] private CaptureSystem listOfScreen;
@@ -20,6 +21,7 @@ public class AlbumManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Confined;
                 albumOpen = true;
                 albumCanvas.SetActive(true);
+                CanvasToDeactivate.SetActive(false);
 
                 for (int i = 0; i < listOfScreen.screenSprites.Count; i++)
                 {
@@ -36,6 +38,7 @@ public class AlbumManager : MonoBehaviour
                 Cursor.lockState= CursorLockMode.Locked;
                 albumOpen = false;
                 albumCanvas.SetActive(false);
+                CanvasToDeactivate.SetActive(true);
             }
         }
     }
