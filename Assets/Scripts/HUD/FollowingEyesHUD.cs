@@ -15,6 +15,7 @@ public class FollowingEyesHUD : MonoBehaviour, IPointerClickHandler
     [Header("Wide-Eyes Animation")]
     [SerializeField] private int requireClickToAnimate;
     [SerializeField] private int animationDuration;
+    private Animator eyesAnimator;
 
     private Vector2 bodyOrigin;
     private Vector2 eyesTransformOrigin;
@@ -24,6 +25,7 @@ public class FollowingEyesHUD : MonoBehaviour, IPointerClickHandler
 
     void Start()
     {
+        eyesAnimator = GetComponentInChildren<Animator>();
         bodyOrigin = body.position;
         eyesTransformOrigin = eyesTransform.position;
     }
@@ -59,8 +61,10 @@ public class FollowingEyesHUD : MonoBehaviour, IPointerClickHandler
     IEnumerator EyesLockedAnimation()
     {
         isAnimated = true;
-        Debug.Log("IsAnimated");
+        eyesAnimator.SetBool("IsBlinking", false);
         yield return new WaitForSeconds(animationDuration);
+        eyesAnimator.SetBool("IsBlinking", true);
+        clickCount = 0;
         isAnimated = false;
     }
 }
