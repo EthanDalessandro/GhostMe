@@ -12,7 +12,7 @@ public class CaptureSystem : MonoBehaviour
 
     [Header("Reference To other Objects")]
     [SerializeField] private List<Transform> targets;
-    [SerializeField] private TextMeshProUGUI cameraCaptureLeftTextHUD;
+    public TextMeshProUGUI cameraCaptureLeftTextHUD;
     [SerializeField] private GameObject ShutterEffectObject;
 
     [Header("Sensors")]
