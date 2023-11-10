@@ -1,37 +1,42 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class FollowingEyesHUD : MonoBehaviour
+public class FollowingEyesHUD : MonoBehaviour, IPointerClickHandler
 {
-    public Transform body;
+    [SerializeField] private Transform body;
+    [SerializeField] private Transform eyesTransform;
+
+    [SerializeField] private float eyesLookAtSpeed;
+    [SerializeField] private float bodyLookAtSpeed;
+    [SerializeField] private float offsetX;
+    [SerializeField] private float offsetY;
+    [Header("Wide-Eyes Animation")]
+    [SerializeField] private int requireClickToAnimate;
+    [SerializeField] private int animationDuration;
+
     private Vector2 bodyOrigin;
+    private Vector2 eyesTransformOrigin;
 
-    public Transform leftEye;
-    private Vector2 leftEyeOrigin;
+    private int clickCount;
+    private bool isAnimated;
 
-    public Transform rightEye;
-    private Vector2 rightEyeOrigin;
-
-    public float lookAtSpeed;
-    public float offsetX;
-    public float offsetY;
-
-    private void Start()
+    void Start()
     {
-        leftEyeOrigin = leftEye.position;
-        rightEyeOrigin = rightEye.position;
         bodyOrigin = body.position;
+        eyesTransformOrigin = eyesTransform.position;
     }
 
-    private void Update()
+    void Update()
     {
-        LookAtMovement(leftEye, leftEyeOrigin, lookAtSpeed, offsetX, offsetY);
-        LookAtMovement(rightEye, rightEyeOrigin, lookAtSpeed, offsetX, offsetY);
-        LookAtMovement(body, bodyOrigin, lookAtSpeed, offsetX / 3, offsetY / 3);
+        LookAtMovement(body, bodyOrigin, bodyLookAtSpeed, offsetX / 4, offsetY / 4);
+        LookAtMovement(eyesTransform, eyesTransformOrigin, eyesLookAtSpeed, offsetX, offsetY);
     }
 
-    private void LookAtMovement(Transform objectToMove, Vector2 ObjectToMoveOrigin, float speedOfLook, float offSetX, float offSetY)
+    void LookAtMovement(Transform objectToMove, Vector2 ObjectToMoveOrigin, float speedOfLook, float offSetX, float offSetY)
     {
+        if (isAnimated == true) { return; }
         Vector2 mousePos = Mouse.current.position.ReadValue();
 
         objectToMove.position = Vector2.MoveTowards(objectToMove.position, mousePos, speedOfLook);
@@ -39,5 +44,23 @@ public class FollowingEyesHUD : MonoBehaviour
         clampedPosition.x = Mathf.Clamp(clampedPosition.x, ObjectToMoveOrigin.x - offSetX, ObjectToMoveOrigin.x + offSetX);
         clampedPosition.y = Mathf.Clamp(clampedPosition.y, ObjectToMoveOrigin.y - offSetY, ObjectToMoveOrigin.y + offSetY);
         objectToMove.position = clampedPosition;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if(clickCount > requireClickToAnimate) { return; }
+        clickCount++;
+        if(clickCount >= requireClickToAnimate)
+        {
+            StartCoroutine(EyesLockedAnimation());
+        }
+    }
+
+    IEnumerator EyesLockedAnimation()
+    {
+        isAnimated = true;
+        Debug.Log("IsAnimated");
+        yield return new WaitForSeconds(animationDuration);
+        isAnimated = false;
     }
 }
