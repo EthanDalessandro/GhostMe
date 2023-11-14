@@ -3481,6 +3481,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1282892105821149044, guid: 89c1bb98369beee41a9427ae69c6b555,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3572611417367776780, guid: 89c1bb98369beee41a9427ae69c6b555,
         type: 3}
       propertyPath: m_IsActive
@@ -9586,6 +9591,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342800945}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &346354665 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8377265767688842934, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1343713240}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd34bd3d7e48824e9ca69bd9b59a554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &354616856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23440,6 +23457,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost
       objectReference: {fileID: 0}
+    - target: {fileID: 1652131198591291320, guid: 0debd6f39c867fc4e91ff31a9b406c2d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2205027203241345460, guid: 0debd6f39c867fc4e91ff31a9b406c2d,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -36645,6 +36667,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 366111173545288562, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 366111173545288562, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: albumState
+      value: 
+      objectReference: {fileID: 346354665}
+    - target: {fileID: 1483773991952069144, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483773991952069144, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1343713241}
+    - target: {fileID: 1483773991952069144, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1343713241}
+    - target: {fileID: 1483773991952069144, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1343713242}
+    - target: {fileID: 1483773991952069144, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 346354665}
+    - target: {fileID: 1483773991952069144, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483773991952069144, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Look
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483773991952069144, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Capture
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483773991952069144, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenCloseAlbum
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638033972749019878, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2638033972749019878, guid: 7ae9052e57e86f04b958b5f112ec81c4,
         type: 3}
       propertyPath: scoreText
@@ -36690,6 +36772,11 @@ PrefabInstance:
       propertyPath: albumCanvas
       value: 
       objectReference: {fileID: 2066617325}
+    - target: {fileID: 8377265767688842934, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: listOfScreen
+      value: 
+      objectReference: {fileID: 1343713242}
     - target: {fileID: 8377265767688842934, guid: 7ae9052e57e86f04b958b5f112ec81c4,
         type: 3}
       propertyPath: CanvasToDeactivate
@@ -36750,6 +36837,30 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ae9052e57e86f04b958b5f112ec81c4, type: 3}
+--- !u!114 &1343713241 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 366111173545288562, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1343713240}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520a712e837c90549b3010b2ea8ac6c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1343713242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2638033972749019878, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1343713240}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800e13110d2d3f24481b8561fd13604c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1346955110
 GameObject:
   m_ObjectHideFlags: 0

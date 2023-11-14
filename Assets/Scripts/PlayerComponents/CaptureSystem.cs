@@ -85,16 +85,23 @@ public class CaptureSystem : MonoBehaviour
         {
             foreach (GridPointSensor sensor in ghostSensors)
             {
+                float ghostScore = 0;
+
                 for (int i = 0; i < sensor.Points.Count; i++)
                 {
                     Vector3 direction = sensor.Points[i] - transform.position;
                     direction = direction.normalized;
-                    score += CheckVisibility(direction);
+                    ghostScore += CheckVisibility(direction);
                 }
+                ghostScore /= sensor.Points.Count;
+                ghostScore *= 100;
+
+                score += ghostScore;
+               
             }
-            score /= ghostSensors[0].Points.Count;
-            score *= 100;
+
             totalScore += score;
+            
         }
     }
 
@@ -107,10 +114,10 @@ public class CaptureSystem : MonoBehaviour
             if (hit.transform.gameObject.CompareTag("Ghost"))
             {
                 float cosAngle = Vector3.Dot(cam.transform.forward, direction);
-                float factor = Remap(cosAngle, 0.6f, 0.8f, 0, 1);
+                float factor = Remap(cosAngle, 0.8f, 1f, 0, 1);
                 factor = Mathf.Clamp01(factor);
 
-                factor *= factor;
+                //factor *= factor;
 
                 //Debug.DrawRay(transform.position, direction * hit.distance, Color.red * factor * 1 / Mathf.Max(1, hit.distance - 5));
 
