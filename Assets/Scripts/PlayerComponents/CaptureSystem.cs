@@ -94,6 +94,7 @@ public class CaptureSystem : MonoBehaviour
             }
             score /= ghostSensors[0].Points.Count;
             score *= 100;
+            ScoreStoring.instance.ScreenShotsPoints.Add(Mathf.CeilToInt(score));
             totalScore += score;
         }
     }
@@ -141,6 +142,7 @@ public class CaptureSystem : MonoBehaviour
         Sprite sprite = Sprite.Create(texture, rect, Vector2.zero);
 
         screenSprites.Add(sprite);
+        ScoreStoring.instance.ScreenShotsTextures.Add(sprite);
     }
 
     public IEnumerator captureDelay(float time)
