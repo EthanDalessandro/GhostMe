@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -99,9 +100,7 @@ public class CaptureSystem : MonoBehaviour
                 score += ghostScore;
                
             }
-
             totalScore += score;
-            
         }
     }
 
@@ -121,7 +120,7 @@ public class CaptureSystem : MonoBehaviour
 
                 //Debug.DrawRay(transform.position, direction * hit.distance, Color.red * factor * 1 / Mathf.Max(1, hit.distance - 5));
 
-                return factor * 1 / Mathf.Max(1, hit.distance - 10);
+                return factor * 1 / Mathf.Max(1, hit.distance - 25);
             }
         }
         return 0;

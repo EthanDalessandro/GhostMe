@@ -147,15 +147,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 800e13110d2d3f24481b8561fd13604c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets: []
   cameraCaptureLeftTextHUD: {fileID: 0}
+  actualScoreText: {fileID: 0}
+  targets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ShutterEffectObject: {fileID: 0}
   cam: {fileID: 812077171843675496}
   ghostSensors: []
-  volume: 0.5
+  volume: 0.1
   audioSource: {fileID: 5933636445658193131}
   cameraShutterSFX: {fileID: 8300000, guid: 3dc9bc7df20e1a348aa395e73ef37245, type: 3}
   score: 0
+  totalScore: 0
   canCapture: 1
   captureRate: 1
   captureLeft: 15
@@ -227,6 +232,18 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   albumState: {fileID: 8377265767688842934}
+  volumeFootSteps: 1
+  audioSource: {fileID: 5933636445658193131}
+  footsteps:
+  - {fileID: 8300000, guid: c1822a73167fd524199360619d083191, type: 3}
+  - {fileID: 8300000, guid: 76f55af2900248a459b484f66810dd2a, type: 3}
+  - {fileID: 8300000, guid: 3e0e88f6f2749f44480afcbf44bf9438, type: 3}
+  - {fileID: 8300000, guid: 486705dd5b81ff94d9389917c8fb3b90, type: 3}
+  - {fileID: 8300000, guid: 182a1f0fb13ed3a408ec975b6466acee, type: 3}
+  - {fileID: 8300000, guid: 5202d9bc5ae44114b8c8f7f382b795ce, type: 3}
+  - {fileID: 8300000, guid: 85bcc4c9851b2a14091a923ad4104ab2, type: 3}
+  - {fileID: 8300000, guid: 8d328ad893d3d494a9354f93b2228b54, type: 3}
+  timeBeforeFootstepSfxIsPlayed: 1
 --- !u!54 &5433369674851153066
 Rigidbody:
   m_ObjectHideFlags: 0
