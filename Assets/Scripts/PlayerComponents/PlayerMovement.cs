@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,10 +20,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AnimationCurve speedCurve;
     [SerializeField] private AlbumManager albumState;
 
+    [SerializeField, Range(0, 1)] private float volumeFootSteps;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private List<AudioClip> footsteps;
+    [SerializeField] private float timeBeforeFootstepSfxIsPlayed;
+    private float timeBeforeFootstepSfxIsPlayedBackUp;
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        timeBeforeFootstepSfxIsPlayedBackUp = timeBeforeFootstepSfxIsPlayed;
     }
 
     private void OnApplicationFocus(bool focus)
@@ -40,6 +48,22 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+
+        if (isMoving)
+        {
+            timeBeforeFootstepSfxIsPlayed -= Time.fixedDeltaTime;
+
+            if (timeBeforeFootstepSfxIsPlayed <= 0)
+            {
+                audioSource.PlayOneShot(footsteps[Random.Range(0, footsteps.Count)], volumeFootSteps);
+                timeBeforeFootstepSfxIsPlayed = timeBeforeFootstepSfxIsPlayedBackUp;
+            }
+        }
+        else
+        {
+            timeBeforeFootstepSfxIsPlayed = timeBeforeFootstepSfxIsPlayedBackUp;
+        }
+
     }
 
     public void Look(InputAction.CallbackContext context)
