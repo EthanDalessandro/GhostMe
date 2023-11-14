@@ -568,6 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e534121321b7745419f86d78d032ed83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _curveSign: 0
   _buttonXCurve:
     serializedVersion: 2
     m_Curve:
@@ -848,6 +849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e534121321b7745419f86d78d032ed83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _curveSign: 1
   _buttonXCurve:
     serializedVersion: 2
     m_Curve:
@@ -1039,6 +1041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e534121321b7745419f86d78d032ed83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _curveSign: 0
   _buttonXCurve:
     serializedVersion: 2
     m_Curve:

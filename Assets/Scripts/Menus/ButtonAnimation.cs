@@ -7,6 +7,7 @@ public class ButtonAnimation : MonoBehaviour
     [SerializeField] private CurveSign _curveSign;
     [SerializeField] private AnimationCurve _buttonXCurve;
     [SerializeField] private AnimationCurve _buttonYCurve;
+
     private Vector2 _buttonOrigin;
     private float _curvePosition;
     private int _sign;
