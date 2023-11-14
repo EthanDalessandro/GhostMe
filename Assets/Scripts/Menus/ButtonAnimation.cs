@@ -2,10 +2,14 @@ using UnityEngine;
 
 public class ButtonAnimation : MonoBehaviour
 {
+    private enum CurveSign { POSITIVE, NEGATIVE }
+
+    [SerializeField] private CurveSign _curveSign;
     [SerializeField] private AnimationCurve _buttonXCurve;
     [SerializeField] private AnimationCurve _buttonYCurve;
     private Vector2 _buttonOrigin;
     private float _curvePosition;
+    private int _sign;
 
     private void Awake()
     {
@@ -14,8 +18,19 @@ public class ButtonAnimation : MonoBehaviour
 
     private void Update()
     {
+        GetCurveSign();
         SetButtonPosition();
         UpdateCurvePosition();
+    }
+
+    private void GetCurveSign()
+    {
+        switch (_curveSign)
+        {
+            case CurveSign.POSITIVE: _sign = 1; break;
+            case CurveSign.NEGATIVE: _sign = -1; break;
+            default: _sign = 1; break;
+        }
     }
 
     private void SetButtonPosition()
@@ -35,11 +50,11 @@ public class ButtonAnimation : MonoBehaviour
 
     private float SetButtonOnX()
     {
-        return _buttonOrigin.x + _buttonXCurve.Evaluate(_curvePosition);
+        return _buttonOrigin.x + (_buttonXCurve.Evaluate(_curvePosition) * _sign);
     }
 
     private float SetButtonOnY()
     {
-        return _buttonOrigin.y + _buttonYCurve.Evaluate(_curvePosition);
+        return _buttonOrigin.y + (_buttonYCurve.Evaluate(_curvePosition) * _sign);
     }
 }
