@@ -11,8 +11,9 @@ public class CaptureSystem : MonoBehaviour
     private int depthScreen = 12;
 
     [Header("Reference To other Objects")]
+    public TextMeshProUGUI cameraCaptureLeftTextHUD;
+    public GameObject actualScoreText;
     [SerializeField] private List<Transform> targets;
-    [SerializeField] private TextMeshProUGUI cameraCaptureLeftTextHUD;
     [SerializeField] private GameObject ShutterEffectObject;
 
     [Header("Sensors")]
@@ -24,7 +25,9 @@ public class CaptureSystem : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip cameraShutterSFX;
 
-    [SerializeField] private float score;
+    [Header("Game Status")]
+    public float score;
+    public float totalScore;
 
     [Header("Capture Properties")]
     [SerializeField] private bool canCapture = true;
@@ -63,6 +66,10 @@ public class CaptureSystem : MonoBehaviour
             //Gameplay ****/
 
             //HUD /****
+            actualScoreText.GetComponent<TextMeshProUGUI>().text = "+ " + Mathf.CeilToInt(score).ToString();
+            actualScoreText.SetActive(false);
+            actualScoreText.SetActive(true);
+
             cameraCaptureLeftTextHUD.text = captureLeft.ToString();
             ShutterEffectObject.SetActive(false);
             ShutterEffectObject.SetActive(true);
@@ -87,6 +94,7 @@ public class CaptureSystem : MonoBehaviour
             }
             score /= ghostSensors[0].Points.Count;
             score *= 100;
+            totalScore += score;
         }
     }
 
@@ -106,7 +114,7 @@ public class CaptureSystem : MonoBehaviour
 
                 //Debug.DrawRay(transform.position, direction * hit.distance, Color.red * factor * 1 / Mathf.Max(1, hit.distance - 5));
 
-                return factor * 1 / Mathf.Max(1, hit.distance - 5);
+                return factor * 1 / Mathf.Max(1, hit.distance - 10);
             }
         }
         return 0;

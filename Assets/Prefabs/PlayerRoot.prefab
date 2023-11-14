@@ -149,11 +149,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets: []
   cameraCaptureLeftTextHUD: {fileID: 0}
+  ShutterEffectObject: {fileID: 0}
   cam: {fileID: 812077171843675496}
   ghostSensors: []
   volume: 0.5
   audioSource: {fileID: 5933636445658193131}
-  cameraShutterSFX: {fileID: 8300000, guid: 9c0e280370b4b2645929fec5250b64ae, type: 3}
+  cameraShutterSFX: {fileID: 8300000, guid: 3dc9bc7df20e1a348aa395e73ef37245, type: 3}
   score: 0
   canCapture: 1
   captureRate: 1
@@ -206,16 +207,16 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.29890892
-      value: 2.6723323
-      inSlope: 4
-      outSlope: 4
+      value: 4.672332
+      inSlope: 5.3106728
+      outSlope: 5.3106728
       tangentMode: 136
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 4
+      value: 6
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -385,6 +386,7 @@ GameObject:
   - component: {fileID: 1034126108462813686}
   - component: {fileID: 5772425511817896053}
   - component: {fileID: 2159299581902950510}
+  - component: {fileID: 3409204284946783585}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -417,7 +419,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0}
+  m_BackGroundColor: {r: 0.12156863, g: 0.13333334, b: 0.35686275, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -544,6 +546,23 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3409204284946783585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3804176186831415012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: a779419b4898d234ba933b67b7178fd2, type: 2}
 --- !u!1 &6384463518091694243
 GameObject:
   m_ObjectHideFlags: 0
