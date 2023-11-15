@@ -92,13 +92,14 @@ public class EndShotListManager : MonoBehaviour
             if (i != 0) { shotYposition += -400; }
             cloneRectTransform.anchoredPosition = new Vector2(shotXposition, shotYposition);
         }
+        ScoreStoring.instance.ScreenShotsTextures.Clear();
     }
 
     void SetMoveTarget()
     {
         if (!_isInitial) { return;}
         _moveTarget = new Vector2(transform.position.x, transform.position.y);
-        _moveTarget.y += _shotListRectTransform.sizeDelta.y + (_shotListRectTransform.sizeDelta.y / 2);
+        _moveTarget.y += _shotListRectTransform.sizeDelta.y + (shotCount * 100);
     } 
 
     void SetShotsData(GameObject shot ,int i)
@@ -108,5 +109,14 @@ public class EndShotListManager : MonoBehaviour
 
         shotImage.sprite = ScoreStoring.instance.ScreenShotsTextures[i];
         shotPoint.text = ScoreStoring.instance.ScreenShotsPoints[i] + " p";
+    }
+
+    IEnumerator SetTotalPoints()
+    {
+        yield return new WaitForSeconds(0.5f);
+        for(int i = 0; i < shotCount; i++)
+        {
+
+        }
     }
 }

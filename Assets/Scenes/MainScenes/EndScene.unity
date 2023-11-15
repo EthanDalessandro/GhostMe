@@ -613,8 +613,6 @@ MonoBehaviour:
     type: 3}
   _shotScale: {x: 300, y: 300}
   _shotOffset: 100
-  shotCount: 0
-  shotListY: 0
   _shotListMoveSpeed: 2
   _isInitial: 1
 --- !u!1 &1207061112
@@ -754,6 +752,8 @@ GameObject:
   - component: {fileID: 1244156934}
   - component: {fileID: 1244156936}
   - component: {fileID: 1244156935}
+  - component: {fileID: 1244156937}
+  - component: {fileID: 1244156938}
   m_Layer: 5
   m_Name: TotalScore
   m_TagString: Untagged
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'xxxx
+  m_text: '0 p
 
 '
   m_isRightToLeft: 0
@@ -879,6 +879,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244156933}
   m_CullTransparentMesh: 1
+--- !u!114 &1244156937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244156933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5998fa642ef54a84da3afd9fb5bc9c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startCountDelay: 1.5
+  _countDelay: 0.84
+--- !u!95 &1244156938
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244156933}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cfa729500085f234cb0a30ecd20179b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1363241245
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,8 +979,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19984297b38bc4c49beed890ca47df21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenShotsTextures: []
-  screenShotsPoints: 
+  screenShotsTextures:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  screenShotsPoints: 00000000010000000200000003000000040000000700000008000000170000003800000064000000
 --- !u!4 &1411213091
 Transform:
   m_ObjectHideFlags: 0
