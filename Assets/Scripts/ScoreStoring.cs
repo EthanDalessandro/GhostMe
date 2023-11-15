@@ -7,8 +7,8 @@ public class ScoreStoring : MonoBehaviour
     [SerializeField] private List<Sprite> screenShotsTextures = new List<Sprite>();
     [SerializeField] private List<int> screenShotsPoints = new List<int>();
 
-    public List<Sprite> ScreenShotsTextures { get { return screenShotsTextures; } }
-    public List<int> ScreenShotsPoints { get { return screenShotsPoints; } }
+    public List<Sprite> ScreenShotsTextures { get { return screenShotsTextures; } set { screenShotsTextures = value; } }
+    public List<int> ScreenShotsPoints { get { return screenShotsPoints; } set { screenShotsPoints = value; } }
 
     private void Awake()
     {
