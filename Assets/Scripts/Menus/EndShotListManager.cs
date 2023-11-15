@@ -21,7 +21,6 @@ public class EndShotListManager : MonoBehaviour
     {
         _shotListRectTransform = GetComponent<RectTransform>();
         ScaleShotList();
-        ScaleScrollBar();
         CreateShots();
         SetMoveTarget();
         yield return new WaitForSeconds(1);
@@ -32,7 +31,7 @@ public class EndShotListManager : MonoBehaviour
     {
         if(_isInitial) 
         {
-            if (_moveShotList) { transform.position = Vector2.MoveTowards(transform.position, _moveTarget, _shotListMoveSpeed); }
+            if (_moveShotList) { transform.position = Vector2.MoveTowards(transform.position, _moveTarget, _shotListMoveSpeed * 100 * Time.deltaTime); }
             if (transform.position.y >= _moveTarget.y) 
             {
                 _moveShotList = false;
@@ -52,28 +51,11 @@ public class EndShotListManager : MonoBehaviour
         _shotListRectTransform.sizeDelta = new Vector2(1000, shotListY);
     }
 
-    void ScaleScrollBar()
-    {
-        if (!_scrollbar) { return; }
-        float screenSizeLength = GetScreenSizeLength();
-        if(screenSizeLength >= 1)
-        {
-            _scrollbar.size = 1;
-            return;
-        }
-        _scrollbar.size = screenSizeLength;
-    }
-
     float GetShotListY()
     {
         if (!_scrollbar) { return _shotListRectTransform.anchoredPosition.y; }
         float shotListPosition = _scrollbar.value * (_shotListRectTransform.sizeDelta.y - 850);
         return shotListPosition;
-    }
-
-    float GetScreenSizeLength()
-    {
-        return 1000 / _shotListRectTransform.sizeDelta.y;
     }
 
     void CreateShots()
@@ -87,6 +69,7 @@ public class EndShotListManager : MonoBehaviour
             SetShotsData(clone, i);
             RectTransform cloneRectTransform = clone.GetComponent<RectTransform>();
             cloneRectTransform.SetParent(transform);
+            cloneRectTransform.localScale = Vector3.one;
             shotXposition = 100;
             if (i % 2 == 0) { shotXposition = 0; }
             if (i != 0) { shotYposition += -400; }
@@ -109,14 +92,5 @@ public class EndShotListManager : MonoBehaviour
 
         shotImage.sprite = ScoreStoring.instance.ScreenShotsTextures[i];
         shotPoint.text = ScoreStoring.instance.ScreenShotsPoints[i] + " p";
-    }
-
-    IEnumerator SetTotalPoints()
-    {
-        yield return new WaitForSeconds(0.5f);
-        for(int i = 0; i < shotCount; i++)
-        {
-
-        }
     }
 }

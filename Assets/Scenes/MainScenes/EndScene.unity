@@ -613,7 +613,7 @@ MonoBehaviour:
     type: 3}
   _shotScale: {x: 300, y: 300}
   _shotOffset: 100
-  _shotListMoveSpeed: 2
+  _shotListMoveSpeed: 4.25
   _isInitial: 1
 --- !u!1 &1207061112
 GameObject:
@@ -891,8 +891,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5998fa642ef54a84da3afd9fb5bc9c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startCountDelay: 1.5
-  _countDelay: 0.84
+  _startCountDelay: 2
+  _countDelay: 1
 --- !u!95 &1244156938
 Animator:
   serializedVersion: 5
