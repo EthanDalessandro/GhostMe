@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   captureAdded: 3
+  mainAudio: {fileID: 0}
+  pickUpSound: {fileID: 8300000, guid: 67c6e9000a11fb9468e5c5f0b8a97d6d, type: 3}
 --- !u!95 &4561725853551187891
 Animator:
   serializedVersion: 5

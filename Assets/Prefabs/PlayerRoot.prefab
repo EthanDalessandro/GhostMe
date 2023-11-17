@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 2638033972749019878}
   - component: {fileID: 8377265767688842934}
   - component: {fileID: 366111173545288562}
+  - component: {fileID: 949567874883875264}
   - component: {fileID: 5433369674851153066}
   - component: {fileID: 4239191315950647889}
   - component: {fileID: 5933636445658193131}
+  - component: {fileID: 865058501458383259}
   m_Layer: 0
   m_Name: PlayerRoot
   m_TagString: Player
@@ -147,15 +149,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 800e13110d2d3f24481b8561fd13604c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets: []
   cameraCaptureLeftTextHUD: {fileID: 0}
+  actualScoreText: {fileID: 0}
+  targets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ShutterEffectObject: {fileID: 0}
   cam: {fileID: 812077171843675496}
   ghostSensors: []
-  volume: 0.5
+  volume: 0.2
   audioSource: {fileID: 5933636445658193131}
   cameraShutterSFX: {fileID: 8300000, guid: 3dc9bc7df20e1a348aa395e73ef37245, type: 3}
   score: 0
+  totalScore: 0
   canCapture: 1
   captureRate: 1
   captureLeft: 15
@@ -227,6 +234,44 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   albumState: {fileID: 8377265767688842934}
+  volumeFootSteps: 1
+  audioSource: {fileID: 5933636445658193131}
+  footsteps:
+  - {fileID: 8300000, guid: c1822a73167fd524199360619d083191, type: 3}
+  - {fileID: 8300000, guid: 76f55af2900248a459b484f66810dd2a, type: 3}
+  - {fileID: 8300000, guid: 3e0e88f6f2749f44480afcbf44bf9438, type: 3}
+  - {fileID: 8300000, guid: 486705dd5b81ff94d9389917c8fb3b90, type: 3}
+  - {fileID: 8300000, guid: 182a1f0fb13ed3a408ec975b6466acee, type: 3}
+  - {fileID: 8300000, guid: 5202d9bc5ae44114b8c8f7f382b795ce, type: 3}
+  - {fileID: 8300000, guid: 85bcc4c9851b2a14091a923ad4104ab2, type: 3}
+  - {fileID: 8300000, guid: 8d328ad893d3d494a9354f93b2228b54, type: 3}
+  timeBeforeFootstepSfxIsPlayed: 1
+--- !u!114 &949567874883875264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303872331722425873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7241eaf1e32a74998e7ab8b58ac9f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBeforeSpawnSmiler: 0.5
+  chanceToSpawn: 70
+  smilerPrefab: {fileID: 9158242281311142049, guid: cbd691b3963cd684ca1746fceebcd4f6,
+    type: 3}
+  cameraShakeSource: {fileID: 865058501458383259}
+  volume: 0.436
+  smilerSpawnSfx: {fileID: 8300000, guid: c0ba33a4ca210724a942531b49aa8f51, type: 3}
+  ScreamerSfx: {fileID: 8300000, guid: 0ecc4a77bd1d96f429748c50932b8946, type: 3}
+  mainAudioSource: {fileID: 5933636445658193131}
+  maxDistanceOfSpawn: 70
+  timeBeforeKillObject: 5
+  timeBetweenImpulse: 1
+  canShakeCamera: 1
+  actualSmiler: {fileID: 0}
 --- !u!54 &5433369674851153066
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -373,6 +418,59 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &865058501458383259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303872331722425873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 3
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 1, y: 0, z: 0}
 --- !u!1 &3804176186831415012
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +485,7 @@ GameObject:
   - component: {fileID: 5772425511817896053}
   - component: {fileID: 2159299581902950510}
   - component: {fileID: 3409204284946783585}
+  - component: {fileID: 5782814687381346792}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -553,7 +652,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3804176186831415012}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -563,6 +662,28 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: a779419b4898d234ba933b67b7178fd2, type: 2}
+--- !u!114 &5782814687381346792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3804176186831415012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c11265b855408d42af33d62691f5194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseLocalSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &6384463518091694243
 GameObject:
   m_ObjectHideFlags: 0
