@@ -36706,6 +36706,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 949567874883875264, guid: 7ae9052e57e86f04b958b5f112ec81c4,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 949567874883875264, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
       propertyPath: ScreamerSfx
       value: 
       objectReference: {fileID: 8300000, guid: 0ecc4a77bd1d96f429748c50932b8946, type: 3}
@@ -36759,6 +36764,11 @@ PrefabInstance:
       propertyPath: cameraCaptureLeftTextHUD
       value: 
       objectReference: {fileID: 1192364748}
+    - target: {fileID: 3409204284946783585, guid: 7ae9052e57e86f04b958b5f112ec81c4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8377265767688842934, guid: 7ae9052e57e86f04b958b5f112ec81c4,
         type: 3}
       propertyPath: albumCanvas
@@ -36772,7 +36782,7 @@ PrefabInstance:
     - target: {fileID: 8469190896561848032, guid: 7ae9052e57e86f04b958b5f112ec81c4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.004837861
+      value: -4.2
       objectReference: {fileID: 0}
     - target: {fileID: 8469190896561848032, guid: 7ae9052e57e86f04b958b5f112ec81c4,
         type: 3}
@@ -36782,7 +36792,7 @@ PrefabInstance:
     - target: {fileID: 8469190896561848032, guid: 7ae9052e57e86f04b958b5f112ec81c4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -30.26
       objectReference: {fileID: 0}
     - target: {fileID: 8469190896561848032, guid: 7ae9052e57e86f04b958b5f112ec81c4,
         type: 3}
