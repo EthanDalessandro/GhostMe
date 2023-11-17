@@ -613,8 +613,9 @@ MonoBehaviour:
     type: 3}
   _shotScale: {x: 300, y: 300}
   _shotOffset: 100
-  _shotListMoveSpeed: 4.25
+  _shotListMoveSpeed: 300
   _isInitial: 1
+  _moveTarget: {x: 0, y: 0}
 --- !u!1 &1207061112
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +662,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207061112}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
   m_Name: 
@@ -892,7 +893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startCountDelay: 2
-  _countDelay: 1
+  _countDelay: 0.95
 --- !u!95 &1244156938
 Animator:
   serializedVersion: 5
@@ -1042,9 +1043,9 @@ RectTransform:
   m_Father: {fileID: 1728203275}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -900}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1415210249
 MonoBehaviour:
@@ -1256,8 +1257,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1363241246}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.8, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TotalScore : MonoBehaviour
 {
-    [SerializeField][Range(0.1f, 2f)] float _startCountDelay; 
-    [SerializeField][Range(0.1f, 1f)] float _countDelay;
+    [SerializeField][Range(0.1f, 10f)] float _startCountDelay; 
+    [SerializeField][Range(0.1f, 10f)] float _countDelay;
     TMP_Text _totalPointText;
     Animator _totalPointAnimator;
     int _totalPoints;
@@ -25,9 +25,9 @@ public class TotalScore : MonoBehaviour
             _totalPointAnimator.SetBool("DoEffect", true);
             _totalPoints += ScoreStoring.instance.ScreenShotsPoints[i];
             _totalPointText.text = _totalPoints + " p";
-            yield return new WaitForSeconds(_countDelay/2);
+            yield return new WaitForSeconds(0.4f);
             _totalPointAnimator.SetBool("DoEffect", false);
-            yield return new WaitForSeconds(_countDelay/2);
+            yield return new WaitForSeconds(_countDelay);
         }
         yield return null;
         ScoreStoring.instance.ScreenShotsPoints.Clear();

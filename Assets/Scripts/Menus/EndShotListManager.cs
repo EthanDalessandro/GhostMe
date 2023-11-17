@@ -9,11 +9,11 @@ public class EndShotListManager : MonoBehaviour
     [SerializeField] GameObject _shotPrefab;
     [SerializeField] Vector2 _shotScale;
     [SerializeField] int _shotOffset;
-    [SerializeField][Range(0.1f, 10f)] float _shotListMoveSpeed;
+    [SerializeField] [Range(10f, 400f)] float _shotListMoveSpeed;
     [SerializeField] bool _isInitial;
 
     RectTransform _shotListRectTransform;
-    Vector2 _moveTarget;
+    [SerializeField] Vector2 _moveTarget;
     bool _moveShotList;
     int shotCount;
 
@@ -31,15 +31,19 @@ public class EndShotListManager : MonoBehaviour
     {
         if(_isInitial) 
         {
-            if (_moveShotList) { transform.position = Vector2.MoveTowards(transform.position, _moveTarget, _shotListMoveSpeed * 100 * Time.deltaTime); }
-            if (transform.position.y >= _moveTarget.y) 
+            if (_moveShotList) 
+            {
+                _shotListRectTransform.anchoredPosition = Vector2.MoveTowards(_shotListRectTransform.anchoredPosition, _moveTarget, _shotListMoveSpeed * Time.deltaTime);
+            }
+            if (_shotListRectTransform.anchoredPosition.y >= _moveTarget.y - 0.01f)
             {
                 _moveShotList = false;
                 _isInitial = false;
             }
             return; 
         }
-        _shotListRectTransform.anchoredPosition = new Vector2(0, GetShotListY());
+        _scrollbar.enabled = true;
+        _shotListRectTransform.anchoredPosition = new Vector2(0, GetScrollbarY());
     }
 
     void ScaleShotList()
@@ -51,7 +55,7 @@ public class EndShotListManager : MonoBehaviour
         _shotListRectTransform.sizeDelta = new Vector2(1000, shotListY);
     }
 
-    float GetShotListY()
+    float GetScrollbarY()
     {
         if (!_scrollbar) { return _shotListRectTransform.anchoredPosition.y; }
         float shotListPosition = _scrollbar.value * (_shotListRectTransform.sizeDelta.y - 850);
@@ -81,8 +85,7 @@ public class EndShotListManager : MonoBehaviour
     void SetMoveTarget()
     {
         if (!_isInitial) { return;}
-        _moveTarget = new Vector2(transform.position.x, transform.position.y);
-        _moveTarget.y += _shotListRectTransform.sizeDelta.y + (shotCount * 100);
+        _moveTarget = new Vector2(_shotListRectTransform.anchoredPosition.x, _shotListRectTransform.rect.height - 850);
     } 
 
     void SetShotsData(GameObject shot ,int i)
