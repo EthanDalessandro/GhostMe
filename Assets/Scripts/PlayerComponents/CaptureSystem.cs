@@ -94,8 +94,8 @@ public class CaptureSystem : MonoBehaviour
             }
             score /= ghostSensors[0].Points.Count;
             score *= 100;
-            ScoreStoring.instance.ScreenShotsPoints.Add(Mathf.CeilToInt(score));
             totalScore += score;
+            ScoreStoring.instance.ScreenShotsPoints.Add(Mathf.CeilToInt(score));
         }
     }
 
