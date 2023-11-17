@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class EndShotListManager : MonoBehaviour
 {
     [SerializeField] Scrollbar _scrollbar;
+    [SerializeField] GameObject _returnButton;
     [SerializeField] GameObject _shotPrefab;
-    [SerializeField] Vector2 _shotScale;
     [SerializeField] int _shotOffset;
     [SerializeField] [Range(10f, 400f)] float _shotListMoveSpeed;
     [SerializeField] bool _isInitial;
 
     RectTransform _shotListRectTransform;
-    [SerializeField] Vector2 _moveTarget;
+    Vector2 _moveTarget;
     bool _moveShotList;
     int shotCount;
 
@@ -43,6 +43,7 @@ public class EndShotListManager : MonoBehaviour
             return; 
         }
         _scrollbar.enabled = true;
+        _returnButton.SetActive(true);
         _shotListRectTransform.anchoredPosition = new Vector2(0, GetScrollbarY());
     }
 
@@ -51,7 +52,7 @@ public class EndShotListManager : MonoBehaviour
         if (!ScoreStoring.instance) { return; }
         shotCount = ScoreStoring.instance.ScreenShotsTextures.Count;
         int shotListY = _shotOffset * shotCount;
-        shotListY += (int)_shotScale.y * shotCount;
+        shotListY += 300 * shotCount;
         _shotListRectTransform.sizeDelta = new Vector2(1000, shotListY);
     }
 

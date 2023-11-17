@@ -27,7 +27,7 @@ public class TotalScore : MonoBehaviour
             _totalPointText.text = _totalPoints + " p";
             yield return new WaitForSeconds(0.4f);
             _totalPointAnimator.SetBool("DoEffect", false);
-            yield return new WaitForSeconds(_countDelay);
+            yield return new WaitForSeconds(_countDelay - 0.4f);
         }
         yield return null;
         ScoreStoring.instance.ScreenShotsPoints.Clear();

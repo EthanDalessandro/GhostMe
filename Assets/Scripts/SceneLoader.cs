@@ -7,12 +7,13 @@ public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader instance;
 
-    [SerializeField] Image _fadeImage;
+    Image _fadeImage;
 
     Animator _fadeAnimator;
 
     private void Awake()
     {
+        _fadeImage = GetComponent<Image>();
         _fadeAnimator = _fadeImage.GetComponent<Animator>();
         instance = this;
     }

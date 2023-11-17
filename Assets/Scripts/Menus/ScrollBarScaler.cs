@@ -6,7 +6,7 @@ public class ScrollBarScaler : MonoBehaviour
     [SerializeField] RectTransform _shotListRectTransform;
     Scrollbar _scrollbar;
 
-    private void Start()
+    void Start()
     {
         _scrollbar = GetComponent<Scrollbar>();
         ScaleScrollBar();
