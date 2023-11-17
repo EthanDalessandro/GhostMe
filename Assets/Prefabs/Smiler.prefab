@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8128386483654892640}
   - component: {fileID: 2106669540123402360}
   - component: {fileID: 6971789488571703550}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 4018824130196593687}
   - component: {fileID: 5541406743267188647}
   - component: {fileID: 5935922774215433839}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Smiler
   m_TagString: Untagged
   m_Icon: {fileID: 0}

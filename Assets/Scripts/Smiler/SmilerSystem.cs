@@ -34,9 +34,14 @@ public class SmilerSystem : MonoBehaviour
     private void Update()
     {
         ChanceToSpawnSmiler();
-        if(actualSmiler != null)
+        ShakeCameraWhenLookSmiler();
+    }
+
+    private void ShakeCameraWhenLookSmiler()
+    {
+        if (actualSmiler != null)
         {
-            if(Vector3.Dot(transform.forward, (actualSmiler.transform.position - transform.position).normalized) >= 0.9f && canShakeCamera)
+            if (Vector3.Dot(transform.forward, (actualSmiler.transform.position - transform.position).normalized) >= 0.9f && canShakeCamera)
             {
                 StartCoroutine(ShakeCameraDelay());
                 cameraShakeSource.GenerateImpulse();
@@ -65,39 +70,44 @@ public class SmilerSystem : MonoBehaviour
 
     public void SpawnSmiler(GameObject smilerPrefab)
     {
-        if(maxDistanceOfSpawn <= 2)
+        if (maxDistanceOfSpawn <= 2)
         {
             maxDistanceOfSpawn = 2;
         }
+
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward * -1, out hit, maxDistanceOfSpawn))
         {
             if (hit.collider != null)
             {
-                actualSmiler = Instantiate(smilerPrefab, transform.forward * -Random.Range(2, hit.distance), Quaternion.identity);
+                actualSmiler = Instantiate(smilerPrefab, transform.position + transform.forward * Random.Range(2, hit.distance) * -1, Quaternion.identity);
                 actualSmiler.transform.rotation = Quaternion.LookRotation(transform.position - actualSmiler.transform.position);
                 actualSmiler.transform.position = new Vector3(actualSmiler.transform.position.x, actualSmiler.transform.position.y + 1, actualSmiler.transform.position.z);
 
                 mainAudioSource.PlayOneShot(smilerSpawnSfx, volume / 4);
 
                 StartCoroutine(DestroyActualSmiler(timeBeforeKillObject));
+                Debug.Log("Ray : " + transform.forward * -Random.Range(2, hit.distance));
             }
         }
         else
         {
-            actualSmiler = Instantiate(smilerPrefab, transform.forward * -Random.Range(2, maxDistanceOfSpawn), Quaternion.identity);
+            actualSmiler = Instantiate(smilerPrefab, transform.position + transform.forward * Random.Range(2, maxDistanceOfSpawn) * -1, Quaternion.identity);
             actualSmiler.transform.rotation = Quaternion.LookRotation(transform.position - actualSmiler.transform.position);
             actualSmiler.transform.position = new Vector3(actualSmiler.transform.position.x, actualSmiler.transform.position.y + 1, actualSmiler.transform.position.z);
 
             mainAudioSource.PlayOneShot(smilerSpawnSfx, volume);
             StartCoroutine(DestroyActualSmiler(timeBeforeKillObject));
+            Debug.Log("Ray : " + transform.forward * -Random.Range(2, maxDistanceOfSpawn));
         }
+        Debug.Log("Smiler : " + actualSmiler.transform.position);
+        Debug.DrawRay(transform.position, transform.forward * -Random.Range(2, hit.distance), Color.blue, 10);
     }
 
     public IEnumerator DestroyActualSmiler(float time)
     {
         yield return new WaitForSeconds(time);
-        if(actualSmiler != null)
+        if (actualSmiler != null)
         {
             Destroy(actualSmiler);
             actualSmiler = null;
