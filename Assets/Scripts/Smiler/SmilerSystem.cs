@@ -87,7 +87,6 @@ public class SmilerSystem : MonoBehaviour
                 mainAudioSource.PlayOneShot(smilerSpawnSfx, volume / 4);
 
                 StartCoroutine(DestroyActualSmiler(timeBeforeKillObject));
-                Debug.Log("Ray : " + transform.forward * -Random.Range(2, hit.distance));
             }
         }
         else
@@ -98,10 +97,7 @@ public class SmilerSystem : MonoBehaviour
 
             mainAudioSource.PlayOneShot(smilerSpawnSfx, volume);
             StartCoroutine(DestroyActualSmiler(timeBeforeKillObject));
-            Debug.Log("Ray : " + transform.forward * -Random.Range(2, maxDistanceOfSpawn));
         }
-        Debug.Log("Smiler : " + actualSmiler.transform.position);
-        Debug.DrawRay(transform.position, transform.forward * -Random.Range(2, hit.distance), Color.blue, 10);
     }
 
     public IEnumerator DestroyActualSmiler(float time)

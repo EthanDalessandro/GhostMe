@@ -36704,36 +36704,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRoot
       objectReference: {fileID: 0}
-    - target: {fileID: 949567874883875264, guid: 7ae9052e57e86f04b958b5f112ec81c4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 949567874883875264, guid: 7ae9052e57e86f04b958b5f112ec81c4,
-        type: 3}
-      propertyPath: ScreamerSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 0ecc4a77bd1d96f429748c50932b8946, type: 3}
-    - target: {fileID: 949567874883875264, guid: 7ae9052e57e86f04b958b5f112ec81c4,
-        type: 3}
-      propertyPath: chanceToSpawn
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 949567874883875264, guid: 7ae9052e57e86f04b958b5f112ec81c4,
-        type: 3}
-      propertyPath: canShakeCamera
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 949567874883875264, guid: 7ae9052e57e86f04b958b5f112ec81c4,
-        type: 3}
-      propertyPath: timeBetweenImpulse
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2638033972749019878, guid: 7ae9052e57e86f04b958b5f112ec81c4,
-        type: 3}
-      propertyPath: volume
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 2638033972749019878, guid: 7ae9052e57e86f04b958b5f112ec81c4,
         type: 3}
       propertyPath: actualScoreText
@@ -36764,11 +36734,6 @@ PrefabInstance:
       propertyPath: cameraCaptureLeftTextHUD
       value: 
       objectReference: {fileID: 1192364748}
-    - target: {fileID: 3409204284946783585, guid: 7ae9052e57e86f04b958b5f112ec81c4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8377265767688842934, guid: 7ae9052e57e86f04b958b5f112ec81c4,
         type: 3}
       propertyPath: albumCanvas
