@@ -7,6 +7,7 @@ public class Battery : MonoBehaviour
     [SerializeField] private float _baterryTimer;
     [SerializeField] private float _remainingTime;
     [SerializeField] private TMP_Text _batteryLeftTimer;
+
     private Slider _batterySlider;
     private TMP_Text _batteryPercent;
 
@@ -25,6 +26,15 @@ public class Battery : MonoBehaviour
         UpdateBatterySliderValue();
         UpdateBatteryPercent();
         UpdateTimeLeft();
+        CheckIfBatteryIsEmpty();
+    }
+
+    private void CheckIfBatteryIsEmpty()
+    {
+        if(_remainingTime <= 0)
+        {
+            SceneLoader.instance.LoadScene("EndScene");
+        }
     }
 
     private void UpdateBatterySliderValue()

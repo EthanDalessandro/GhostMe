@@ -29,7 +29,6 @@ public class AlbumManager : MonoBehaviour
                     GameObject actualShotImage = GameObject.FindWithTag("ImageShot");
                     actualShotImage.GetComponent<Image>().sprite = listOfScreen.screenSprites[i];
                     actualShotImage.tag = "Untagged";
-                    
                 }
                 listOfScreen.screenSprites.Clear();
             }

@@ -101,6 +101,7 @@ public class CaptureSystem : MonoBehaviour
                
             }
             totalScore += score;
+            ScoreStoring.instance.ScreenShotsPoints.Add(Mathf.CeilToInt(score));
         }
     }
 
@@ -147,6 +148,7 @@ public class CaptureSystem : MonoBehaviour
         Sprite sprite = Sprite.Create(texture, rect, Vector2.zero);
 
         screenSprites.Add(sprite);
+        ScoreStoring.instance.ScreenShotsTextures.Add(sprite);
     }
 
     public IEnumerator captureDelay(float time)
