@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scrollbar: {fileID: 1207061114}
-  _returnButton: {fileID: 0}
+  _returnButton: {fileID: 693065767}
   _shotPrefab: {fileID: 1851350789297171945, guid: 8a218bae12e27e44d9083b77d1a437c7,
     type: 3}
   _shotOffset: 100
