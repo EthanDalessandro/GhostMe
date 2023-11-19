@@ -151,10 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraCaptureLeftTextHUD: {fileID: 0}
   actualScoreText: {fileID: 0}
-  targets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  targets: []
   ShutterEffectObject: {fileID: 0}
   cam: {fileID: 812077171843675496}
   ghostSensors: []
@@ -258,12 +255,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab7241eaf1e32a74998e7ab8b58ac9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeSpawnSmiler: 0.5
-  chanceToSpawn: 70
+  timeBeforeSpawnSmiler: 10
+  chanceToSpawn: 5
   smilerPrefab: {fileID: 9158242281311142049, guid: cbd691b3963cd684ca1746fceebcd4f6,
     type: 3}
   cameraShakeSource: {fileID: 865058501458383259}
-  volume: 0.436
+  volume: 0.4
   smilerSpawnSfx: {fileID: 8300000, guid: c0ba33a4ca210724a942531b49aa8f51, type: 3}
   ScreamerSfx: {fileID: 8300000, guid: 0ecc4a77bd1d96f429748c50932b8946, type: 3}
   mainAudioSource: {fileID: 5933636445658193131}
@@ -652,7 +649,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3804176186831415012}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
